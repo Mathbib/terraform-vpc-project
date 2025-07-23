@@ -22,7 +22,7 @@ resource "aws_subnet" "private" {
   cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = data.aws_availability_zones.available.names[count.index]
   tags = {
-    Name = "${var.environment == "prod" ? "PVT-subnet-${count.index + 1}-RealWorld" : "PVT-subnet-${count.index + 1}-Research"}"
+    Name = var.environment == "prod" ? "PVT-subnet-${count.index + 1}-RealWorld" : "PVT-subnet-${count.index + 1}-Research"
   }
 }
 
